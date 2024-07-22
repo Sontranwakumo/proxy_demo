@@ -9,4 +9,7 @@ import "hardhat/console.sol";
 
 contract MyUUPSProxy is ERC1967Proxy{
     constructor(address add, bytes memory data) ERC1967Proxy(add,data){}
+    receive()external payable{
+
+    }
 }

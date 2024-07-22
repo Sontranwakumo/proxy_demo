@@ -1,6 +1,7 @@
 import { ethers } from "hardhat";
 
 const json = require("../../address.json");
+const logic1ad = json.logic1;
 const proxyad = json.proxy;
 
 async function main(){

@@ -8,15 +8,17 @@ import "@openzeppelin/contracts/proxy/utils/Initializable.sol";
 
 import "hardhat/console.sol";
 
-contract UUPSLogic is UUPSUpgradeable,Ownable,Initializable {
+contract UUPSLogic is UUPSUpgradeable,Initializable {
     uint256 internal _value;
-
-    constructor () Ownable(msg.sender){}
+    address internal _owner;
 
     function initialize(address newowner) public initializer{
-        
+        _owner = newowner;
     }
-
+    modifier onlyOwner() {
+        require(msg.sender == _owner,"You are not my owner");
+        _;
+    }
 
     function setValue(uint256 newValue) public onlyOwner virtual {
         _value = newValue;
